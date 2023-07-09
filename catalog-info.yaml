@@ -1,0 +1,41 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "proxy"
+  description: "A demo quarkus app"
+  annotations:
+    argocd/app-name: proxy-dev
+    backstage.io/kubernetes-id: proxy
+    backstage.io/kubernetes-namespace: proxy-dev
+    janus-idp.io/tekton-enabled : 'true'
+    github.com/project-slug: LiorJanus/proxy
+    quay.io/repository-slug: "liorjanus/proxy"
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.cluster-cl4w8.cl4w8.sandbox526.opentlc.com/#https://github.com/LiorJanus/proxy?che-editor=che-incubator/che-code/insiders&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces.apps.cluster-cl4w8.cl4w8.sandbox526.opentlc.com/#https://github.com/LiorJanus/proxy?che-editor=che-incubator/che-idea/latest&devfilePath=.devfile-intellij.yaml
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "group:default/proxy"
+  providesApis:
+    - "proxy"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "proxy"
+  description: "A demo quarkus app"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "group:default/proxy"
+  definition:
+    $text: ./openapi.yaml
