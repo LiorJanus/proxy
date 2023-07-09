@@ -1,6 +1,6 @@
 # proxy
 
-A demo quarkus app
+A demo quarkus app proxy test
 
 ## Running the application in dev mode
 
